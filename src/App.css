@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 150px;
 }
 
 .App-logo {
@@ -12,7 +13,17 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.footer {
+  background-color: grey;
+  color: white;
+  padding: 15px 0 5px;
+  margin-top: 30px;
+  font: bolder;
+}
 
+.footer .text-muted {
+  color: white;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
