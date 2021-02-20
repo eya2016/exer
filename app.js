@@ -1,37 +1,30 @@
-let input = document.querySelector(".todo-input");
-let add = document.querySelector(".add");
-
+//Récupération des élèments Node du document ( boutton add ) + lui attribuer un event
+let add= document.querySelector(".add");
 add.addEventListener("click", function () {
 
- console.log("eleent input: ",input ," value de INPUT ===> ",input.value )
+    //recupérer la valeur du mail
+    var input = document.querySelector(".todo-input");
+    var email = input.value;
+  
+    if (email.toString().length ) {
+      //CONDIION ==> conforne au REGEX-  cad conforme au modèle d'un email
+      const regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g;
+      let verfication = regex.test(String(email).toLowerCase());
 
-  if ((value != "") && (controleSaisi(input.value)) ) {
-    addTodo(value);
-  }
-  input.value = "";
-
-});
-
-function controleSaisi (value) { 
-
-  const regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g;
-  console.log(" valeur recupere ==> ", value)
-
-  let resu = regex.test(String(value).toLowerCase());
-
-   console.log(" resultat du test ==> ",resu);
-    return value.match(regex);
-  }
-
-function addTodo(x) {
-  let parent = document.querySelector(".todo-container");
-  let kid = document.createElement("li");
-  kid.classList.add("todo-item");
-  kid.innerHTML = `
-      <label class="checkbox">
-        <input type="checkbox">
-        <span class="checkmark"></span>
-      </label>
-      <div>${x}</div>`;
-  parent.prepend(kid);
-}
+      if (verfication){
+          //récupérer l'element parent
+          let parent = document.querySelector(".todo-container");
+          //créer le fils + lui attribuer une class + lui ajouter du contenu TXT/HTmL
+          let kid = document.createElement("li");
+          kid.classList.add("todo-item");
+          kid.innerHTML = `
+              <label class="checkbox">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <div>${email}</div>`;
+          // AFFECTER LE FILS AU PARENT
+          parent.prepend(kid);    
+      }
+    }   
+})
